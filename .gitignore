@@ -5,3 +5,5 @@ yarn.lock
 /assets/public/css
 /assets/public/js
 /vendor
+README.md
+.idea

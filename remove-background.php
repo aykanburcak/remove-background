@@ -19,3 +19,11 @@ function remove_background_enqueue_admin_script( $hook ) {
 	wp_enqueue_script( 'remove_background_script', plugin_dir_url( __FILE__ ) . 'assets/public/js/backend.js', array(), '1.0', true );
 }
 add_action( 'admin_enqueue_scripts', 'remove_background_enqueue_admin_script' );
+
+/* Ajax endpoint for API call */
+add_action( 'wp_ajax_remove_background_request', 'remove_background_request' );
+add_action( 'wp_ajax_nopriv_remove_background_request', 'remove_background_request' );
+
+function remove_background_request() {
+    var_dump('test');
+}

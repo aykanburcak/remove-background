@@ -3,21 +3,27 @@
  */
 import '../sass/backend.scss';
 import { insertButton } from './modules/insertButton';
+import { apiRequest } from './modules/apiRequest';
+import { REMOVE_BACKGROUND_ACTION } from './constants';
+
+const handleEditClick = (event, editButton) => {
+	const clickedElement = event.target;
+
+	if (clickedElement.matches('.button.imgedit-rmbg')) {
+		apiRequest(REMOVE_BACKGROUND_ACTION, imageEdit.postid);
+	}
+
+	if (clickedElement.matches(editButton)) {
+		insertButton();
+	}
+};
 
 (function () {
 	const editButton = '.button.edit-attachment';
 
 	/* Insert Remove Background button when clicking edit image button */
-	document.addEventListener('click', function (e) {
-		const el = e.target;
-
-		if (el.matches('.button.imgedit-rmbg')) {
-			alert(imageEdit.postid);
-		}
-
-		if (el.matches(editButton)) {
-			insertButton();
-		}
+	document.addEventListener('click', function (event) {
+		handleEditClick(event, editButton);
 	});
 })();
 
